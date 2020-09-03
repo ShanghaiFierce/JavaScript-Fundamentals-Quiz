@@ -9,7 +9,7 @@
 --font: #030303;
 }
 
-header.page-title {
+.page-title {
 width: 100%;
 color: #030303;
 display: inline-block;
@@ -44,9 +44,14 @@ body {
 
   .quizcontainer {
       width: 800px;
-      max-width: 75%;
+      max-width: 80rem;
       background-color: #ffffff;
       padding: 10%;
+      display: flex;
+  }
+
+  #question {
+    color:black;
   }
 
   .button-grid {
@@ -62,6 +67,7 @@ body {
     padding: 25px 10px;
     border-radius: 5px;
     color: #ffffff;
+    justify-content: left;
   }
 
   .btn:hover {

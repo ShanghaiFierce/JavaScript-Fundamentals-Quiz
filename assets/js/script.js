@@ -1,23 +1,47 @@
 // timer for quiz
-var x = setInterval(function() {
-    var distance = '';
-    var countDownDate = new Date("00:00:00").getTime();
+document.addEventListener(){
+const timeDisplayLeft = document.querySelector('#demo')
+const startBtn = document.querySelector('#startQuiz')
+let timeLeft = 100
+
+function countDown(){
+    setInterval(function(){
+        if (timeLeft <= 0) {
+            clearInterval(timeLeft = 0)
+        }
+        timeDisplayLeft.innerHTML = timeLeft    
+        timeLeft -=1
+    }, 10000)
+}
+
+startBtn.addEventListener('click', countDown)
+
+}
+
+// var timer = setInterval(function() {
+//     var distance = '';
+//     var countDownDate = new Date("00:00:00").getTime();
     
-    // Time calculations for seconds
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//     // Time calculations for seconds
+//     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
-    // Display the result in the element with id="demo"
-    document.getElementById("demo").innerHTML = hours + "h "
-    + minutes + "m " + seconds + "s ";
+//     // Display the result in the element with id="demo"
+//     document.getElementById("demo").innerHTML = hours + "h "
+//     + minutes + "m " + seconds + "s ";
   
-    // If the count down is finished, write some text
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("demo").innerHTML = "Time is up!";
-    }
-  }, 1000);
+//     // If the count down is finished, write some text
+//     if (distance < 0) {
+//       clearInterval(x);
+//       document.getElementById("demo").innerHTML = "Time is up!";
+//     }
+//   }, 1000);
 
 // var pageContentE1 = document.querySelector("#page-content");
+
+const question = document.querySelector('#question');
+const choices = Array.from(document.querySelector('#answer-buttons'));
+const scoreInfo = document.querySelector('#score');
+
 
 // quiz questions section
 var quizQuestions = [{
@@ -60,17 +84,15 @@ var quizQuestions = [{
 function startQuiz() {
     var i;
     var j;
-    for ( i = 0; i <quizQuestions.length; i++) {
-        document.getElementById("quizQ").innerHTML += 'form id="question' + (i+1) + ':' + quizQuestions[i].answers;
+    for ( i = 0; i < quizQuestions.length; i++) {
+        question.innerHTML += quizQuestions.quizQ[i];
     }
 
     for ( j = 0; j < quizQuestions[i].answers.length; j++) {
-        document.forms[i].innerHTML += '</div><div class="answer"><input name="q1" value="'+ quizQuestions[i].answers[j] +'" id="value4" type="button" />' + quizQuestions[i].answers[j] + '<br/>';
+        choices.innerHTML += quizQuestions[i].answers[j];
      }
-        document.getElementById("questions").innerHTML +='</form><br/><br/>';
-        }
 
-        document.getElementById("questions").innerHTML += '<button onclick="solveQuiz()">Solve Quiz</button>';
+    document.getElementById("questions").innerHTML += '<button onclick="solveQuiz()">Solve Quiz</button>';
 
 
 function solveQuiz(){
@@ -78,7 +100,7 @@ function solveQuiz(){
     var txt = '';
     var i = 0;
     var correct = 0; 
-    for(i = 0; i < document.forms.length;i++) { 
+    for(i = 0; i < quizQuestions.length; i++) { 
         x = document.forms[i]; 
         for(j = 0; j<x.length; j++){
         if(x[j].checked) { 
