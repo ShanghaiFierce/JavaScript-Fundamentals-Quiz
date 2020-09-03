@@ -8,27 +8,26 @@
 --answer: #d0d0d0;
 --font: #030303;
 }
+  
+#demo {
+float: right;
+}
+
+#score, #highscore {
+float: left;
+}
 
 .page-title {
 width: 100%;
-color: #030303;
+font-size: 2em;
 display: inline-block;
 font: tahoma;
-font-size: 16px;
 align-content: space-around;
-padding: 15%;
-margin: 15%;
 font-family: tahoma;
-font-size: 16px;
 }
 
 #url {
     color: #daa5f2;
-}
-
-.page-title {
-    color: var(--font);
-    font-size: 2em;
 }
 
 body {
@@ -36,7 +35,6 @@ body {
     color: var(--font);
     margin: 0;
     padding: 5% 15%;
-    display: flex;
     min-height: auto;
     text-align: center;
     font-family: Tahoma;
@@ -54,15 +52,10 @@ body {
     color:black;
   }
 
-  .button-grid {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-
-  .btn {
+  .startbtn {
     background-color: var(--purple);
     border: 1px solid var(--purple);
+    width: 10rem;
     margin: 5px;
     padding: 25px 10px;
     border-radius: 5px;
@@ -70,7 +63,19 @@ body {
     justify-content: left;
   }
 
-  .btn:hover {
+  .btn {
+    background-color: var(--purple);
+    border: 1px solid var(--purple);
+    width: 25rem;
+    margin: 5px;
+    padding: 25px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    justify-content: left;
+    text-align: left;
+  }
+
+  .btn:hover, .startbtn:hover {
     cursor: pointer;
     background-color: var(--hover);
   }
@@ -83,7 +88,7 @@ body {
 	border: 0px;
 	padding: 10px 25px;
 	cursor: pointer;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 #submit:hover{
@@ -94,4 +99,8 @@ body {
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
     outline: 0;
 }
- 
+
+#correction {
+  color: #030303;
+  text-align: left;
+}

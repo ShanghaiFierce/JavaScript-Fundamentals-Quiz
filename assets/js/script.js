@@ -1,50 +1,28 @@
+// Hide Quiz container section until after startquiz
+document.getElementById("quiz-container").innerHTML = "";
+
 // timer for quiz
-document.addEventListener(){
-const timeDisplayLeft = document.querySelector('#demo')
-const startBtn = document.querySelector('#startQuiz')
-let timeLeft = 100
+var timeDisplayLeft = document.getElementById('demo')
+var quizButton = document.getElementById('startQuestions');
+let timeLeft = 80
 
 function countDown(){
     setInterval(function(){
-        if (timeLeft <= 0) {
-            clearInterval(timeLeft = 0)
+        if (timeLeft > 0) {
+            timeLeft -= 1;
+            timeDisplayLeft.innerHTML = "Timer: " + timeLeft + " seconds left";
         }
-        timeDisplayLeft.innerHTML = timeLeft    
-        timeLeft -=1
-    }, 10000)
-}
+        else if (timeLeft <= 0) {
+            clearInterval(timeLeft = 0);
+            timeDisplayLeft.innerHTML = "Time is up!";
+            window.location.reload()
+    }; 1000});
+};
 
-startBtn.addEventListener('click', countDown)
+quizButton.addEventListener('click', countDown());
 
-}
-
-// var timer = setInterval(function() {
-//     var distance = '';
-//     var countDownDate = new Date("00:00:00").getTime();
-    
-//     // Time calculations for seconds
-//     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-//     // Display the result in the element with id="demo"
-//     document.getElementById("demo").innerHTML = hours + "h "
-//     + minutes + "m " + seconds + "s ";
-  
-//     // If the count down is finished, write some text
-//     if (distance < 0) {
-//       clearInterval(x);
-//       document.getElementById("demo").innerHTML = "Time is up!";
-//     }
-//   }, 1000);
-
-// var pageContentE1 = document.querySelector("#page-content");
-
-const question = document.querySelector('#question');
-const choices = Array.from(document.querySelector('#answer-buttons'));
-const scoreInfo = document.querySelector('#score');
-
-
-// quiz questions section
-var quizQuestions = [{
+// Quiz Questions + Choices Section
+var questions = [{
     quizQ: "What is the differences between Java and JavaScript?",
     answers: ["Both are a complete programming language.", "Both can only be rendered with HTML pages.", "Java is a complete language, JavaScript is not.", "JavaScript is a complete language, Java is not."],
     correctAnswer: 3
@@ -82,37 +60,33 @@ var quizQuestions = [{
 ];
 
 function startQuiz() {
-    var i;
-    var j;
-    for ( i = 0; i < quizQuestions.length; i++) {
-        question.innerHTML += quizQuestions.quizQ[i];
+    // generate the questions for the quiz
+    var questionText = document.getElementById('qquestion');
+
+    for (var i = 0; i < questions.length; i++ ) {
+        var question = questions[i].quizQ;
+        questionText.innerHTML = questions[i].quizQ;
+    
+        // generate the multiple choice array for the quiz
+        var choice0 = document.getElementById('choice0');
+        var choice1 = document.getElementById('choice1');
+        var choice2 = document.getElementById('choice2');
+        var choice3 = document.getElementById('choice3');
+
+        for (var i = 0; i < questions.length; i++ ) {
+        var answers = questions[i].answers;
+        var btn = document.createElement("BUTTON");
+        choice0.innerHTML = "A. " + questions[i].answers[0];
+        choice1.innerHTML = "B. " + questions[i].answers[1];
+        choice2.innerHTML = "C. " + questions[i].answers[2];
+        choice3.innerHTML = "D. " + questions[i].answers[3];
+
+    };
+        document.getElementById("buttonContainer").innerHTML = "";
+        document.getElementById("container").innerHTML = "";
     }
+};
 
-    for ( j = 0; j < quizQuestions[i].answers.length; j++) {
-        choices.innerHTML += quizQuestions[i].answers[j];
-     }
+startQuiz();
 
-    document.getElementById("questions").innerHTML += '<button onclick="solveQuiz()">Solve Quiz</button>';
-
-
-function solveQuiz(){
-    var x;
-    var txt = '';
-    var i = 0;
-    var correct = 0; 
-    for(i = 0; i < quizQuestions.length; i++) { 
-        x = document.forms[i]; 
-        for(j = 0; j<x.length; j++){
-        if(x[j].checked) { 
-            correctAnswer = quizQuestions[i].correctAnswer;
-            if(x[j].value == quizQuestions[i].answers[correctAnswer]){
-            correct += 1;
-            }
-        }
-        }
-    }
-    document.getElementById("questions").innerHTML += 'Correct answers: '+ correct;
-} 
-
-
-startQuiz.addEventListener('click', startQuiz)
+quizButton.addEventListener("click",startQuiz());

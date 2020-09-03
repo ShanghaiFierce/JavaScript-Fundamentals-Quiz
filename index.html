@@ -8,30 +8,41 @@
 </head>
 
 <body>
-    <main class="">
-        <div class="container">
+    <main>
         <!-- high score link on top left -->
-        <p id="score">View high scores</p>
+        <a href="./assets/high-score/high-score.html" id="highscore">View High Scores</a>
+        <br>
+        <!-- current score tracker -->
+        <p id="score">Score:</p>
         <!-- timer on top right -->
-        <p id="demo"><span>100</span></p>
+        <p id="demo">Timer: 75 seconds left</p>
+        
         <!-- Quiz title centered -->
-        <h1 class="page-title">Coding Quiz Challenge</h1>
-        <!-- Description of quiz centered -->
-        <h3 class="page-content">Welcome to this timed quiz on JavaScript Fundamentals. Try to answer the following questions to the best of your knowledge in the given time-span allowed.</h3>
+        <div class="container" id="container">
+            <h1 class="page-title">Coding Quiz Challenge</h1>
+            <!-- Description of quiz centered -->
+            <h3 class="page-content">Welcome to this timed quiz on JavaScript Fundamentals. Try to answer the following questions to the best of your knowledge in the given time-span allowed.</h3>
+        </div>            
+
         <!-- Button to start the quiz -->
-        <button input type="button" value="Start Quiz" class="btn" id="startQuiz" onclick="startQuiz()">Start Quiz</button>
-            <!-- Quiz section container -->
-            <div id="quizcontainer">
-                <h1 id="question">Question</h1>
-                <div class="button-grid" id="answer-buttons">
-                    <p input type="submit" class="btn" id="choices">Choice 0</p> 
-                    <p input type="submit" class="btn" id="choices">Choice 1</p> 
-                    <p input type="submit" class="btn" id="choices">Choice 2</p> 
-                    <p input type="submit" class="btn" id="choices">Choice 3</p> 
-                </div>
-            </div>
+        <div id="buttonContainer">
+            <button input type="button" value="Start Quiz" class="startbtn" id="startQuestions" onclick="startQuiz()">Start Quiz</button>
         </div>
-</main>
+        
+        <!-- Quiz section container -->
+        <div class="quiz-container" id="quiz-container">
+            <!-- Quiz questions -->
+            <h1 id="qquestion"></h1>
+            <!-- Quiz choices -->
+            <p input type="submit" class="btn" id="choice0"></p> 
+            <p input type="submit" class="btn" id="choice1"></p> 
+            <p input type="submit" class="btn" id="choice2"></p> 
+            <p input type="submit" class="btn" id="choice3"></p> 
+            <hr>
+            <!-- Correct answer response section -->
+            <p id="correction">hey!</p>
+        </div>
+    </main>
 
 <script src="./assets/js/script.js"></script>
 
